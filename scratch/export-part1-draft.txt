@@ -1,0 +1,108 @@
+STREAMBERT PROJECT — COMPLETE CHAT HISTORY EXPORT
+====================================================
+File: streambert_complete_chat_history.txt
+Generated: 2026-09-24 (Asia/Calcutta)
+Export scope note (honest archival statement):
+  This project ran across multiple sandbox sessions. The platform
+  compacts older session context; messages from sessions prior to this
+  one are NOT retrievable verbatim. They are represented here by the
+  surviving session-memory record, clearly labeled PART A, plus explicit
+  markers: [CONTENT NOT AVAILABLE IN CURRENT CHAT CONTEXT].
+  Nothing is fabricated. Everything that IS available appears verbatim.
+  Timestamps: per-message timestamps were never surfaced to the model;
+  only file mtimes / build timestamps (noted where present) exist.
+
+############################################################
+PART A — EARLIER SESSIONS (NOT RETRIEVABLE VERBATIM)
+############################################################
+
+The following user messages existed but their original text is unavailable:
+[CONTENT NOT AVAILABLE IN CURRENT CHAT CONTEXT — original user task prompts
+from earlier sessions: the "platform-aggressive" port directive, token
+handoffs, approvals, corrections]
+[CONTENT NOT AVAILABLE IN CURRENT CHAT CONTEXT — assistant responses from
+earlier sessions, except as preserved in the compacted record below]
+
+SURVIVING COMPACTED RECORD OF EARLIER SESSIONS (verbatim session memory):
+------------------------------------------------------------------------
+**1. Genesys/MISSION**: Full port of the platform-aggressive build of the
+Streambert web app (external-player interceptor, Android WebView bridge,
+native proxy server, TV mode) into a production Android APK; repo:
+https://github.com/the-swathigampa354-ship-it/streambert ; NO administration of
+original upstream genesys/stremio-web (truelockmc/streambert);
+implementation must preserve the platform abstraction (web + android);
+token security rules (never into files/commits/logs/APK).
+
+**2. Work performed todate** (chronological, across sessions):
+- Branch audit of genesys fork + bugfix + upstream sync
+- jules web search + docs (5 exposition/advisor tasks)
+- expo-app scaffold (SDK 52: expo, expo-router, RN 0.76.9,
+  expo-modules-core, expo-dev-utils...)
+- modules/expo-external-player native module (ExternalPlayerModule.kt —
+  VLC/MPV/MX Player/third-party intent launch), AndroidProxyServer.java,
+  androidNativeProxy js bridge, with-external-player + with-dist-assets
+  plugins, eas.json (development/preview/production android APK),
+  app.json (v2.6.0, com.truelockmc.streambert)
+- tests (expo config parity, js unit, java proxy E2E, bridge contract,
+  UI/TV static+jsdom, frontend render no-key/invalid-key, apiLive,
+  frontendDist) = tests/run_all.sh 10/10 ALL PASS
+- git surgery + push to fork main = 67227f9 (commits ad2ad5c + 67227f9);
+  two push bugs fixed (gitlink trap A1, gitignore parent-dir trap A2);
+  fresh-clone verification 17/17 files
+- THIS SESSION: EAS Android APK build + GitHub Release
+
+**3. Architecture decisions** (from earlier session reasoning, preserved):
+- APK = Expo SDK 52 managed workflow + local Expo module (NOT bare RN /
+  NOT Termux — Termux path was explicitly rejected as a production
+  delivery vehicle; it was only for early testing) because EAS gives
+  reproducible cloud APKs without local SDK.
+- WebView-based app (React Native WebView loading the Vite-built
+  frontend from bundled assets/dist) + native bridge module, because the
+  original is a JS web app and reimplementation in native UI was out of
+  scope and slower.
+- External-player system = intent-driven handoff to VLC/MPV/MX Player
+  (stream URLs + headers passed via Intent extras), with in-app proxy
+  (Ktor CIO Android proxy server) rewriting HTTP streams that require
+  custom headers / mixed-content handling; flashseed/Jackett-style
+  source endpoints preserved via platformAdapter platformSwitch.
+- TV mode = D-pad navigation layer (FocusRobot spatial focus +
+  TVSidebar), per user request, tested via static/jsdom suites.
+- Delay of APK packaging: earlier sessions intentionally stopped after
+  "STOP after sync" constraint — no APK build until a separate explicit
+  instruction; user later issued the FINAL APK BUILD + GITHUB RELEASE
+  directive (12-step format, exact end phrases).
+- EAS was investigated/chosen because local gradle builds need the full
+  Android SDK which is unavailable in this sandbox; EAS cloud builds
+  are the sanctioned deliverable path; tokens through EAS env only.
+
+**4. Directives/constraints encountered** (from earlier sessions, preserved):
+- Security: EXPO_TOKEN + GitHub token via env only, never into files /
+  app.json / eas.json / .env / commits / logs / APK; rotate any token
+  exposed in chat.
+- Never push to upstream truelockmc/streambert; destination =
+  swathigampa354-ship-it/streambert only.
+- Never git reset --hard / clean -fd without backup; backup bundles
+  mandatory before surgery (backup-outer-68833b5.bundle,
+  backup-expo-app-22d3578.bundle, backup-final-67227f9.bundle).
+- Full validation battery from clean checkout before builds/releases;
+  STOP and fix first on red; no random dep upgrades/blind downgrades.
+- APK not AAB; APK committed nowhere in source tree; released as
+  GitHub release asset Streambert-Android.apk under tag v2.6.0-android
+  titled "Streambert Android APK".
+- Device tests only if physically available; otherwise report
+  DEVICE TESTING NOT AVAILABLE; never claim untested results.
+- Real verification only; proxy fallback preserved; no Termux for
+  production; platform abstraction preserved.
+
+**5. Prior session test/verification results** (recorded earlier):
+- tsc clean; expo-doctor 18/18; tests/run_all.sh 10/10 ALL PASS incl.
+  Metro export (914 modules); secret scan CLEAN (2 documented false
+  positives: JWT-regex inside test_frontend_dist.sh, GraphQL APQ hash
+  in allmanga.js); fresh-clone file verification 17/17.
+[END OF COMPACTED EARLIER RECORD]
+
+############################################################
+PART B — THIS SESSION, FULL TRANSCRIPT (verbatim)
+############################################################
+[Session resumed mid-task: assistant turn below begins the EAS failed-build
+log retrieval. No user turn precedes it within this context.]
